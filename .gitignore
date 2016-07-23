@@ -1,2 +1,5 @@
 vim/plugged/
 vim/.netrwhist
+fish/fishd.*
+fish/functions/
+
