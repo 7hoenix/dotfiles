@@ -1,0 +1,28 @@
+#!/usr/bin/env ruby
+
+require "fileutils"
+
+file_path = "/Users/jphoenix"
+
+symlinkables = [
+  ["#{file_path}/Documents/personal/dotfiles/nvim", "#{file_path}/.config/nvim"],
+  ["#{file_path}/Documents/personal/dotfiles/fish", "#{file_path}/.config/fish"],
+  ["#{file_path}/Documents/personal/dotfiles/tmux/tmux.conf", "#{file_path}/.tmux.conf"]
+]
+
+if !File.exist? "#{file_path}/.config"
+  FileUtils.mkdir "#{file_path}/.config"
+end
+
+def create_symlink(source, destination)
+  if !File.exist? destination
+    FileUtils.ln_s source, destination
+  end
+end
+
+symlinkables.each { |s, d| create_symlink(s, d) }
+
+# curl brew install
+# brew install fish
+# sudo echo "/usr/local/bin/fish" > /etc/shells
+# sudo chsh -s /usr/local/bin/fish jphoenix
