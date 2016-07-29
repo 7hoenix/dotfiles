@@ -3,17 +3,17 @@
 puts "cake"
 require "fileutils"
 
-file_path = "/Users/jphoenix"
-directories = ["Documents/personal", ".config"]
+$file_path = "/Users/jphoenix"
+$directories = ["Documents/personal", ".config"]
 symlinkables = [
-  ["#{file_path}/Documents/personal/dotfiles/nvim", "#{file_path}/.config/nvim"],
-  ["#{file_path}/Documents/personal/dotfiles/fish", "#{file_path}/.config/fish"],
-  ["#{file_path}/Documents/personal/dotfiles/tmux/tmux.conf", "#{file_path}/.tmux.conf"]
+  ["#{$file_path}/Documents/personal/dotfiles/nvim", "#{$file_path}/.config/nvim"],
+  ["#{$file_path}/Documents/personal/dotfiles/fish", "#{$file_path}/.config/fish"],
+  ["#{$file_path}/Documents/personal/dotfiles/tmux/tmux.conf", "#{$file_path}/.tmux.conf"]
 ]
 
 def create_directory(url)
-  if !File.exist? "#{file_path}/#{url}"
-    FileUtils.mkdir "#{file_path}/#{url}"
+  if !File.exist? "#{$file_path}/#{url}"
+    FileUtils.mkdir "#{$file_path}/#{url}"
   end
 end
 
@@ -24,7 +24,7 @@ def create_symlink(source, destination)
 end
 
 directories.each { |url| create_directory(url) }
-`git clone https://github.com/dotfiles #{file_path}/Documents/personal/dotfiles`
+`git clone https://github.com/dotfiles #{$file_path}/Documents/personal/dotfiles`
 symlinkables.each { |s, d| create_symlink(s, d) }
 
 # curl brew install
