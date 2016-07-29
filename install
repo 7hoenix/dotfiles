@@ -4,7 +4,7 @@ puts "cake"
 require "fileutils"
 
 $file_path = "/Users/jphoenix"
-$directories = ["Documents/personal", ".config"]
+directories = ["Documents/personal", ".config"]
 symlinkables = [
   ["#{$file_path}/Documents/personal/dotfiles/nvim", "#{$file_path}/.config/nvim"],
   ["#{$file_path}/Documents/personal/dotfiles/fish", "#{$file_path}/.config/fish"],
@@ -23,7 +23,7 @@ def create_symlink(source, destination)
   end
 end
 
-$directories.each { |url| create_directory(url) }
+directories.each { |url| create_directory(url) }
 `git clone https://github.com/dotfiles #{$file_path}/Documents/personal/dotfiles`
 symlinkables.each { |s, d| create_symlink(s, d) }
 
