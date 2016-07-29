@@ -14,6 +14,8 @@ Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
 Plug 'kien/rainbow_parentheses.vim'
 Plug 'flazz/vim-colorschemes'
+Plug 'plasticboy/vim-markdown'
+Plug 'junegunn/goyo.vim'
 
 call plug#end()
 
@@ -117,6 +119,8 @@ set ts=2
 colorscheme hybrid
 set background=dark
 
+" Plugins
+let g:vim_markdown_folding_disabled = 1
 
 map <leader>tt :NERDTreeToggle<cr>
 

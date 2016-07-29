@@ -1,5 +1,5 @@
-alias fishc="nvim ~/.config/fish/config.fish"
 alias tmuxc="nvim ~/.tmux.conf"
+alias fishc="nvim ~/.config/fish/config.fish"
 alias vimc="nvim ~/Documents/personal/dotfiles/vim/init.vim"
 alias pra="cd ~/Documents/practice"
 alias blog="cd ~/Documents/8thlight/blog/jphoenx"
@@ -8,6 +8,7 @@ alias v="nvim"
 alias gs="git status"
 alias ga="git add"
 alias gcm="git commit -m"
+alias cur="cd ~/Documents/8thlight/projects/server"
 
 alias fishs="source ~/.config/fish/config.fish"
 
