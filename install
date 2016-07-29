@@ -23,7 +23,7 @@ def create_symlink(source, destination)
   end
 end
 
-directories.each { |url| create_directory(url) }
+$directories.each { |url| create_directory(url) }
 `git clone https://github.com/dotfiles #{$file_path}/Documents/personal/dotfiles`
 symlinkables.each { |s, d| create_symlink(s, d) }
 
