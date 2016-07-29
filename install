@@ -30,3 +30,4 @@ symlinkables.each { |s, d| create_symlink(s, d) }
 # brew install fish
 # sudo echo "/usr/local/bin/fish" > /etc/shells
 # sudo chsh -s /usr/local/bin/fish jphoenix
+puts "cake"
