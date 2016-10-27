@@ -16,6 +16,8 @@ Plug 'kien/rainbow_parentheses.vim'
 Plug 'flazz/vim-colorschemes'
 Plug 'plasticboy/vim-markdown'
 Plug 'junegunn/goyo.vim'
+Plug 'tpope/vim-surround'
+Plug 'tpope/vim-repeat'
 
 call plug#end()
 
@@ -31,6 +33,14 @@ set statusline+=\  "Separator
 set statusline+=%L "Total lines
 " }}}
 
+" Screen splitting --------------------- {{{
+set splitright
+nnoremap <C-J> <C-W><C-J>
+nnoremap <C-K> <C-W><C-K>
+nnoremap <C-H> <C-W><C-H>
+nnoremap <C-L> <C-W><C-L>
+" }}}
+
 " Mappings
 nnoremap <leader>vs :execute "rightbelow vsplit " . bufname("#")<cr>
 noremap - ddp
@@ -41,7 +51,7 @@ nnoremap <C-p> :Files<cr>
 inoremap <c-u> <esc>viwUeli
 nnoremap <c-u> viwUel
 
-let mapleader = ","
+let mapleader = "\<Space>"
 let maplocalleader = "\\"
 
 " meta awesomeness
@@ -52,14 +62,11 @@ iabbrev sigg -- <cr>Jphoenix<cr>jphoenx@gmail.com
 iabbrev @@ jpholzmann@gmail.com
 
 " Movement
-nnoremap H I<esc>
-nnoremap L A<esc>
+nnoremap H 0<esc>
+nnoremap L $<esc>
 
 vnoremap <leader>s" <esc>`>a"<esc>`<i"<esc>
 vnoremap <leader>s' <esc>`>a'<esc>`<i'<esc>
-
-" Habits
-inoremap jk <esc>
 
 " FileType Specific settings --------------------- {{{
 " augroup filetype_javascript
@@ -68,6 +75,12 @@ inoremap jk <esc>
 " 	autocmd FileType javascript :iabbrev <buffer> iff if:<left>
 " 	autocmd FileType javascript nnoremap <buffer> <localleader>c I//<esc>
 " augroup END
+
+augroup filetype_ruby
+  autocmd!
+  autocmd FileType ruby :iabbrev <buffer> iff if <cr>end<up><left>
+  autocmd FileType ruby :iabbrev <buffer> fnc def <cr>end<up><left>
+augroup END
 
 augroup filetype_clojure
 	autocmd!
@@ -124,9 +137,3 @@ let g:vim_markdown_folding_disabled = 1
 
 map <leader>tt :NERDTreeToggle<cr>
 
-" Fast screen switching --------------------- {{{
-nnoremap <C-J> <C-W>j<C-W>_
-nnoremap <C-K> <C-W>k<C-W>_
-nnoremap <C-H> <C-W>h<C-W>_
-nnoremap <C-L> <C-W>l<C-W>_
-" }}}
