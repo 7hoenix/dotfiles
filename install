@@ -3,7 +3,7 @@
 puts "cake"
 require "fileutils"
 
-$file_path = "/Users/jphoenix"
+$file_path = "/Users/jphoenx"
 directories = ["Documents/personal", ".config"]
 symlinkables = [
   ["#{$file_path}/Documents/personal/dotfiles/nvim", "#{$file_path}/.config/nvim"],

@@ -41,7 +41,7 @@ nnoremap <C-p> :Files<cr>
 inoremap <c-u> <esc>viwUeli
 nnoremap <c-u> viwUel
 
-let mapleader = ","
+let mapleader = "\<Space>"
 let maplocalleader = "\\"
 
 " meta awesomeness
