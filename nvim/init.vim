@@ -18,6 +18,7 @@ Plug 'plasticboy/vim-markdown'
 Plug 'junegunn/goyo.vim'
 Plug 'tpope/vim-surround'
 Plug 'tpope/vim-repeat'
+Plug 'lambdatoast/elm.vim'
 
 call plug#end()
 
@@ -132,8 +133,12 @@ set ts=2
 colorscheme hybrid
 set background=dark
 
-" Plugins
+" Plugins --------------------- {{{
 let g:vim_markdown_folding_disabled = 1
 
 map <leader>tt :NERDTreeToggle<cr>
 
+nnoremap <leader>el :ElmEvalLine<CR>
+vnoremap <leader>es :<C-u>ElmEvalSelection<CR>
+nnoremap <leader>em :ElmMakeCurrentFile<CR>
+" }}}
