@@ -1,34 +1,42 @@
 #!/usr/bin/env ruby
 
-puts "cake"
-require "fileutils"
+puts "*********************************************Installing********************************************"
 
-$file_path = "/Users/jphoenix"
-directories = ["Documents/personal", ".config"]
-symlinkables = [
-  ["#{$file_path}/Documents/personal/dotfiles/nvim", "#{$file_path}/.config/nvim"],
-  ["#{$file_path}/Documents/personal/dotfiles/fish", "#{$file_path}/.config/fish"],
-  ["#{$file_path}/Documents/personal/dotfiles/tmux/tmux.conf", "#{$file_path}/.tmux.conf"]
-]
+puts "Creating files"
+$files = ["~user/Documents/personal", "~user/.config"].map { |path| File.new(path) }
+puts "You successfully created the following files: [#{$files}]" unless $files.empty?
+puts "---------------------------------------------------------------------------------------------------"
 
-def create_directory(url)
-  if !File.exist? "#{$file_path}/#{url}"
-    FileUtils.mkdir "#{$file_path}/#{url}"
-  end
-end
+puts "Cloning your dotfiles"
+`git clone https://github.com/7hoenix/dotfiles.git #{$personal_path}/dotfiles`
+puts "You successfuly cloned down github into #{$personal_path}/dotfiles" if File.exist?("#{$personal_path}/dotfiles")
+puts "---------------------------------------------------------------------------------------------------"
+
+$dotfiles_path = "~user/Documents/personal/dotfiles"
+
 
 def create_symlink(source, destination)
-  if !File.exist? destination
-    FileUtils.ln_s source, destination
+  File.symlink(source, destination)
+  if File.symlink(destination)
+    puts "Source: #{source}, destination: #{destination}. Created"
   end
 end
 
-directories.each { |url| create_directory(url) }
-`git clone https://github.com/dotfiles #{$file_path}/Documents/personal/dotfiles`
-symlinkables.each { |s, d| create_symlink(s, d) }
+puts "Creating symlinks"
+[["#{$dotfiles_path}/dotfiles/nvim", "~user/.config/nvim"],
+ ["#{$dotfiles}/fish", "~user/.config/fish"],
+ ["#{$dotfiles}/tmux/tmux.conf", "~user/.tmux.conf"]].each { |s, d| create_symlink(s, d) }
+puts "---------------------------------------------------------------------------------------------------"
 
-# curl brew install
-# brew install fish
-# sudo echo "/usr/local/bin/fish" > /etc/shells
-# sudo chsh -s /usr/local/bin/fish jphoenix
-puts "cake"
+puts "Installing Homebrew"
+`/usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"`
+`brew update`
+`brew upgrade`
+puts "---------------------------------------------------------------------------------------------------"
+
+puts "Installing fish"
+`brew install fish`
+puts "---------------------------------------------------------------------------------------------------"
+
+puts "# sudo echo "/usr/local/bin/fish" > /etc/shells" +
+     "# sudo chsh -s /usr/local/bin/fish 7hoenix"
