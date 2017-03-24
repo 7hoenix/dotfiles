@@ -19,6 +19,7 @@ Plug 'junegunn/goyo.vim'
 Plug 'tpope/vim-surround'
 Plug 'tpope/vim-repeat'
 Plug 'lambdatoast/elm.vim'
+Plug 'elixir-lang/vim-elixir'
 
 call plug#end()
 
