@@ -3,16 +3,18 @@
 puts "*********************************************Installing********************************************"
 
 puts "Creating files"
-$files = ["~user/Documents/personal", "~user/.config"].map { |path| File.new(path) }
+$files = ["#{Dir.home}/Documents/personal", "#{Dir.home}/.config"].map { |path| File.new(path) }
 puts "You successfully created the following files: [#{$files}]" unless $files.empty?
 puts "---------------------------------------------------------------------------------------------------"
+
+$personal_path = "#{Dir.home}/Documents/personal"
 
 puts "Cloning your dotfiles"
 `git clone https://github.com/7hoenix/dotfiles.git #{$personal_path}/dotfiles`
 puts "You successfuly cloned down github into #{$personal_path}/dotfiles" if File.exist?("#{$personal_path}/dotfiles")
 puts "---------------------------------------------------------------------------------------------------"
 
-$dotfiles_path = "~user/Documents/personal/dotfiles"
+$dotfiles_path = "#{personal_path}/dotfiles"
 
 
 def create_symlink(source, destination)
@@ -23,9 +25,9 @@ def create_symlink(source, destination)
 end
 
 puts "Creating symlinks"
-[["#{$dotfiles_path}/dotfiles/nvim", "~user/.config/nvim"],
- ["#{$dotfiles}/fish", "~user/.config/fish"],
- ["#{$dotfiles}/tmux/tmux.conf", "~user/.tmux.conf"]].each { |s, d| create_symlink(s, d) }
+[["#{$dotfiles_path}/nvim", "#{Dir.home}/.config/nvim"],
+ ["#{$dotfiles_path}/fish", "#{Dir.home}/.config/fish"],
+ ["#{$dotfiles_path}/tmux/tmux.conf", "#{Dir.home}/.tmux.conf"]].each { |s, d| create_symlink(s, d) }
 puts "---------------------------------------------------------------------------------------------------"
 
 puts "Installing Homebrew"
