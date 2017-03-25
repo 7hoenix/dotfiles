@@ -19,6 +19,9 @@ Plug 'junegunn/goyo.vim'
 Plug 'tpope/vim-surround'
 Plug 'tpope/vim-repeat'
 Plug 'lambdatoast/elm.vim'
+Plug 'Shougo/vimproc.vim', {'do' : 'make'}
+Plug 'Quramy/tsuquyomi'
+Plug 'leafgarland/typescript-vim'
 
 call plug#end()
 
@@ -32,6 +35,7 @@ set statusline+=%= "Swith to right side
 set statusline+=%l "Current line
 set statusline+=\  "Separator
 set statusline+=%L "Total lines
+set inccommand=split
 " }}}
 
 " Screen splitting --------------------- {{{
@@ -130,8 +134,10 @@ filetype plugin indent on
 set ts=2
 
 " COLORS
+let g:hybrid_custom_term_colors = 1
 colorscheme hybrid
-set background=dark
+" colorscheme SlateDark
+" set background=dark
 
 " Plugins --------------------- {{{
 let g:vim_markdown_folding_disabled = 1
