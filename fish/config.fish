@@ -1,16 +1,15 @@
 alias tmuxc="nvim ~/.tmux.conf"
 alias fishc="nvim ~/.config/fish/config.fish"
-alias vimc="nvim ~/Documents/personal/dotfiles/nvim/init.vim"
-alias dotc="cd ~/Documents/personal/dotfiles"
+alias vimc="nvim ~/Vault/dotfiles/nvim/init.vim"
+alias dotc="cd ~/Vault/dotfiles"
 alias pra="cd ~/Documents/practice"
 alias blog="cd ~/Documents/8thlight/blog/jphoenx"
-alias per="cd ~/Documents/personal"
+alias per="cd ~/Vault"
 alias v="nvim"
 alias gs="git status"
 alias gcm="git commit -m"
 alias gcam="git commit -am"
-alias cur="cd ~/Documents/8thlight/client-work/project_travel_trm"
-alias pro="cd ~/Documents/8thlight/projects"
+alias gdc="git diff --cached"
 alias be="bundle exec"
 
 alias fishs="source ~/.config/fish/config.fish"
@@ -39,7 +38,3 @@ function fish_prompt --description 'Write out the prompt'
 
   set_color normal
 end
-
-rvm default
- # export [[ -s $HOME/.rvm/scripts/rvm ]]; and source $HOME/.rvm/scripts/rvm
-
