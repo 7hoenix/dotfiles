@@ -133,6 +133,7 @@ set ts=2
 colorscheme hybrid
 set background=dark
 
+
 " Plugins --------------------- {{{
 let g:vim_markdown_folding_disabled = 1
 
