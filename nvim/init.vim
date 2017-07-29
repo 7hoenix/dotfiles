@@ -18,7 +18,9 @@ Plug 'plasticboy/vim-markdown'
 Plug 'junegunn/goyo.vim'
 Plug 'tpope/vim-surround'
 Plug 'tpope/vim-repeat'
-Plug 'lambdatoast/elm.vim'
+Plug 'elixir-lang/vim-elixir'
+Plug 'ElmCast/elm-vim'
+Plug 'janko-m/vim-test'
 
 call plug#end()
 
@@ -32,6 +34,9 @@ set statusline+=%= "Swith to right side
 set statusline+=%l "Current line
 set statusline+=\  "Separator
 set statusline+=%L "Total lines
+" ag --hidden --ignore .git *.beam -g ""
+
+" set wildignore+=*/tmp/*,*/node_modules/*,*.class,*.pyc,*.beam
 " }}}
 
 " Screen splitting --------------------- {{{
@@ -135,10 +140,17 @@ set background=dark
 
 " Plugins --------------------- {{{
 let g:vim_markdown_folding_disabled = 1
+let g:elm_make_output_file = '/dev/null'
 
 map <leader>tt :NERDTreeToggle<cr>
 
 nnoremap <leader>el :ElmEvalLine<CR>
 vnoremap <leader>es :<C-u>ElmEvalSelection<CR>
 nnoremap <leader>em :ElmMakeCurrentFile<CR>
+
+nnoremap <silent> <leader>n :TestNearest<CR>
+nnoremap <silent> <leader>f :TestFile<CR>
+nnoremap <silent> <leader>a :TestSuite<CR>
+nnoremap <silent> <leader>l :TestLast<CR>
+nnoremap <silent> <leader>g :TestVisit<CR>
 " }}}
