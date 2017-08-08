@@ -10,7 +10,12 @@ alias gs="git status"
 alias gcm="git commit -m"
 alias gcam="git commit -am"
 alias gdc="git diff --cached"
+alias ga="git add"
+alias gcnb="git checkout -b"
+alias gcb="git checkout"
 alias be="bundle exec"
+alias cur="cd ~/Vault/code/client-work/carnival"
+alias pcur="cd ~/Vault/personal/projects/ChessTrained"
 
 alias fishs="source ~/.config/fish/config.fish"
 
@@ -38,3 +43,8 @@ function fish_prompt --description 'Write out the prompt'
 
   set_color normal
 end
+
+# FZF
+set -x FZF_DEFAULT_COMMAND 'ag --hidden --ignore .git -g ""'
+
+status --is-interactive; and source (rbenv init -|psub)

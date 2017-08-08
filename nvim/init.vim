@@ -19,6 +19,8 @@ Plug 'junegunn/goyo.vim'
 Plug 'tpope/vim-surround'
 Plug 'tpope/vim-repeat'
 Plug 'lambdatoast/elm.vim'
+Plug 'leafgarland/typescript-vim'
+Plug 'janko-m/vim-test'
 
 call plug#end()
 
@@ -32,6 +34,7 @@ set statusline+=%= "Swith to right side
 set statusline+=%l "Current line
 set statusline+=\  "Separator
 set statusline+=%L "Total lines
+set inccommand=split
 " }}}
 
 " Screen splitting --------------------- {{{
@@ -141,4 +144,11 @@ map <leader>tt :NERDTreeToggle<cr>
 nnoremap <leader>el :ElmEvalLine<CR>
 vnoremap <leader>es :<C-u>ElmEvalSelection<CR>
 nnoremap <leader>em :ElmMakeCurrentFile<CR>
+
+" Vim Test
+nmap <silent> <leader>tn :TestNearest<CR>
+nmap <silent> <leader>T :TestFile<CR>
+nmap <silent> <leader>a :TestSuite<CR>
+nmap <silent> <leader>l :TestLast<CR>
+nmap <silent> <leader>g :TestVisit<CR>
 " }}}
