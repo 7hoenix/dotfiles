@@ -37,6 +37,7 @@ set statusline+=%l "Current line
 set statusline+=\  "Separator
 set statusline+=%L "Total lines
 set inccommand=split
+set clipboard=unnamed "Copy/Paste in tmux
 " }}}
 
 " Screen splitting --------------------- {{{
