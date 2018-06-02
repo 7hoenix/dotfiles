@@ -5,7 +5,6 @@ call plug#begin()
 Plug 'scrooloose/nerdtree'
 Plug 'tpope/vim-fireplace', { 'for': 'clojure' }
 Plug 'tpope/vim-dispatch'
-Plug 'sheerun/vim-polyglot'
 Plug 'tpope/vim-commentary'
 Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-unimpaired'
@@ -18,8 +17,9 @@ Plug 'plasticboy/vim-markdown'
 Plug 'junegunn/goyo.vim'
 Plug 'tpope/vim-surround'
 Plug 'tpope/vim-repeat'
-Plug 'lambdatoast/elm.vim'
+Plug 'ElmCast/elm-vim'
 Plug 'elixir-lang/vim-elixir'
+Plug 'sheerun/vim-polyglot'
 
 call plug#end()
 
@@ -33,6 +33,7 @@ set statusline+=%= "Swith to right side
 set statusline+=%l "Current line
 set statusline+=\  "Separator
 set statusline+=%L "Total lines
+set inccommand=split
 " }}}
 
 " Screen splitting --------------------- {{{
@@ -60,6 +61,9 @@ let maplocalleader = "\\"
 nnoremap <leader>ev :vsplit $MYVIMRC<cr>
 nnoremap <leader>sv :source $MYVIMRC<cr>
 
+" Pry
+nnoremap <leader>epry Orequire IEx; IEx.pry<esc>
+
 iabbrev sigg -- <cr>Jphoenix<cr>jphoenx@gmail.com
 iabbrev @@ jpholzmann@gmail.com
 
@@ -69,14 +73,6 @@ nnoremap L $<esc>
 
 vnoremap <leader>s" <esc>`>a"<esc>`<i"<esc>
 vnoremap <leader>s' <esc>`>a'<esc>`<i'<esc>
-
-" FileType Specific settings --------------------- {{{
-" augroup filetype_javascript
-" 	autocmd!
-" 	autocmd FileType javascript setlocal nolist
-" 	autocmd FileType javascript :iabbrev <buffer> iff if:<left>
-" 	autocmd FileType javascript nnoremap <buffer> <localleader>c I//<esc>
-" augroup END
 
 augroup filetype_ruby
   autocmd!
@@ -103,6 +99,10 @@ augroup filetype_vim
   autocmd!
   autocmd FileType vim setlocal foldmethod=marker
 augroup END
+
+augroup insert_terminal
+  autocmd TermOpen * setlocal nonumber | startinsert
+augroup END
 " }}}
 
 " Snippets --------------------- {{{
@@ -114,8 +114,6 @@ onoremap al( :<c-u>normal! F(va(<cr>
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "original
-
-" execute pathogen#infect()
 
 syntax on
 filetype plugin indent on
@@ -137,9 +135,9 @@ set background=dark
 " Plugins --------------------- {{{
 let g:vim_markdown_folding_disabled = 1
 
-map <leader>tt :NERDTreeToggle<cr>
+" Elm
+let g:elm_format_autosave = 1
+let g:polyglot_disabled = ['elm']
 
-nnoremap <leader>el :ElmEvalLine<CR>
-vnoremap <leader>es :<C-u>ElmEvalSelection<CR>
-nnoremap <leader>em :ElmMakeCurrentFile<CR>
+map <leader>tt :NERDTreeToggle<cr>
 " }}}
